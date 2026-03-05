@@ -1,230 +1,243 @@
 import streamlit as st
 
-# ---------- PAGE CONFIG ----------
+# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="Mathavan G | Python Developer",
     page_icon="💻",
     layout="wide"
 )
 
-# ---------- CSS ----------
+# ---------------- CSS ----------------
 st.markdown("""
 <style>
 
 .stApp{
 background: linear-gradient(135deg,#020617,#0f172a,#1e293b);
 color:white;
-font-family:Arial;
+font-family: 'Segoe UI';
 }
 
-.center{
+/* HERO */
+
+.hero{
 text-align:center;
+padding:20px;
 }
 
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:12px;
-box-shadow:0px 0px 15px rgba(0,0,0,0.4);
-margin-top:20px;
-}
-
-h1{
-text-align:center;
+.hero h1{
 color:#38bdf8;
+font-size:50px;
 }
 
-h2{
-color:#facc15;
-}
-
-h3{
+.hero h3{
 color:#4ade80;
 }
 
-a{
-color:#38bdf8;
-text-decoration:none;
-font-weight:bold;
+/* CARD */
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+margin-top:20px;
 }
 
-a:hover{
-color:#facc15;
+/* PROJECT CARD */
+
+.project{
+background:#0f172a;
+padding:20px;
+border-radius:12px;
+border:1px solid #334155;
+transition:0.3s;
 }
 
-.stButton>button{
-background:#38bdf8;
-color:black;
-font-weight:bold;
-border-radius:8px;
-height:40px;
-width:100%;
+.project:hover{
+transform:scale(1.03);
+border:1px solid #38bdf8;
 }
 
-.stButton>button:hover{
-background:#facc15;
+footer{
+text-align:center;
+margin-top:40px;
+color:#94a3b8;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- HEADER ----------
-col1,col2,col3 = st.columns([3,2,1])
+# ---------------- SIDEBAR NAVIGATION ----------------
+st.sidebar.title("📌 Navigation")
+
+page = st.sidebar.radio(
+    "Go to",
+    ["Profile", "Education", "Skills", "Projects", "Contact"]
+)
+
+# ---------------- HERO SECTION ----------------
+col1, col2 = st.columns([3,1])
 
 with col1:
-    st.markdown("<h1>MATHAVAN G</h1>",unsafe_allow_html=True)
-    st.markdown("<h3 class='center'>Python Developer</h3>",unsafe_allow_html=True)
-
     st.markdown("""
-    <div class='center'>
-    📞 6374950532 |  
-    📧 mathavaannavy@gmail.com  
-    <br><br>
-    <a href='https://github.com/Math333-coder'>GitHub</a> |
-    <a href='https://www.linkedin.com/in/mathavan-g-5344b5299'>LinkedIn</a>
-    </div>
-    """,unsafe_allow_html=True)
+<div class="hero">
 
-with col3:
-    st.image("photo.jpeg",width=170)
+<h1>MATHAVAN G</h1>
+<h3>Python Developer</h3>
 
-st.markdown("---")
+📞 6374950532  
+📧 mathavaannavy@gmail.com  
 
-# ---------- SESSION STATE ----------
-if "page" not in st.session_state:
-    st.session_state.page = "Profile"
+<a href="https://github.com/Math333-coder">GitHub</a> |
+<a href="https://www.linkedin.com/in/mathavan-g-5344b5299">LinkedIn</a>
 
-# ---------- NAVIGATION BUTTONS ----------
-col1,col2,col3,col4,col5 = st.columns(5)
-
-with col1:
-    if st.button("👨‍💻 Profile"):
-        st.session_state.page="Profile"
+</div>
+""", unsafe_allow_html=True)
 
 with col2:
-    if st.button("🎓 Education"):
-        st.session_state.page="Education"
-
-with col3:
-    if st.button("🛠 Skills"):
-        st.session_state.page="Skills"
-
-with col4:
-    if st.button("🚀 Projects"):
-        st.session_state.page="Projects"
-
-with col5:
-    if st.button("📬 Contact"):
-        st.session_state.page="Contact"
+    try:
+        st.image("photo.jpeg", width=200)
+    except:
+        st.warning("Profile photo not found")
 
 st.markdown("---")
 
-# ---------- PROFILE ----------
-if st.session_state.page=="Profile":
+# ---------------- PROFILE ----------------
+if page == "Profile":
 
-    st.markdown("<div class='card'>",unsafe_allow_html=True)
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.header("Profile")
+    st.header("👨‍💻 Profile")
 
     st.write("""
-Motivated MCA graduate (2025) seeking an entry-level **Python Developer** role.
+Motivated **MCA Graduate (2025)** seeking an entry-level **Python Developer role**.
 
-Skilled in **Python, SQL, Power BI, and Data Analytics** with strong backend development knowledge.
+Strong knowledge in:
 
-Passionate about building **scalable real-world applications**.
+• Python Programming  
+• SQL & Databases  
+• Power BI Analytics  
+• Data Visualization  
+• Backend Development  
+
+Passionate about building **scalable real-world applications and analytics solutions**.
 """)
 
-    st.markdown("</div>",unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# ---------- EDUCATION ----------
-elif st.session_state.page=="Education":
+# ---------------- EDUCATION ----------------
+elif page == "Education":
 
-    st.markdown("<div class='card'>",unsafe_allow_html=True)
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.header("Education")
+    st.header("🎓 Education")
 
-    st.subheader("Master of Computer Applications (2023 – 2025)")
-    st.write("Hindustan College of Arts and Science")
-    st.write("Affiliated to Bharathiar University")
-    st.write("CGPA: 7.8")
+    col1, col2 = st.columns(2)
 
-    st.subheader("Bachelor of Computer Science (2020 – 2023)")
-    st.write("Sri S. Ramaswamy Naidu Memorial College")
-    st.write("Affiliated to Madurai Kamaraj University")
-    st.write("CGPA: 6.8")
+    with col1:
+        st.subheader("Master of Computer Applications")
+        st.write("2023 – 2025")
+        st.write("Hindustan College of Arts and Science")
+        st.write("Affiliated to Bharathiar University")
+        st.success("CGPA : 7.8")
 
-    st.markdown("</div>",unsafe_allow_html=True)
+    with col2:
+        st.subheader("Bachelor of Computer Science")
+        st.write("2020 – 2023")
+        st.write("Sri S. Ramaswamy Naidu Memorial College")
+        st.write("Affiliated to Madurai Kamaraj University")
+        st.write("Affiliated to Madurai Kamaraj University")
+        st.success("CGPA : 6.8")
 
-# ---------- SKILLS ----------
-elif st.session_state.page=="Skills":
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='card'>",unsafe_allow_html=True)
+# ---------------- SKILLS ----------------
+elif page == "Skills":
 
-    st.header("Technical Skills")
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.subheader("Python")
-    st.progress(90)
+    st.header("🛠 Technical Skills")
 
-    st.subheader("MySQL")
-    st.progress(80)
+    skills = {
+        "Python":90,
+        "MySQL":80,
+        "Power BI":75,
+        "Excel":70,
+        "Data Analytics":80,
+        "Problem Solving":85
+    }
 
-    st.subheader("Power BI")
-    st.progress(75)
+    for skill,value in skills.items():
+        st.subheader(skill)
+        st.progress(value)
 
-    st.subheader("Excel")
-    st.progress(70)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.subheader("Problem Solving")
-    st.progress(85)
+# ---------------- PROJECTS ----------------
+elif page == "Projects":
 
-    st.markdown("</div>",unsafe_allow_html=True)
+    st.header("🚀 Projects")
 
-# ---------- PROJECTS ----------
-elif st.session_state.page=="Projects":
+    col1, col2 = st.columns(2)
 
-    st.markdown("<div class='card'>",unsafe_allow_html=True)
+    with col1:
+        st.markdown("<div class='project'>", unsafe_allow_html=True)
 
-    st.header("Projects")
+        st.subheader("📊 Sales Analytics Dashboard")
 
-    st.subheader("📊 Sales Analytics Dashboard (Power BI)")
-    st.write("""
+        st.write("""
+Power BI dashboard that provides:
+
 • Regional sales analysis  
-• Product-wise revenue tracking  
-• Profit trend analysis  
-• Customer behavior insights  
-• KPI-based decision making
+• Product performance tracking  
+• Profit trend insights  
+• KPI based decision support
 """)
 
-    st.subheader("📈 Dynamic Retail Dashboard (Excel)")
-    st.write("""
-• Sales & Profit analysis  
-• Discount & Quantity tracking  
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("<div class='project'>", unsafe_allow_html=True)
+
+        st.subheader("📈 Dynamic Retail Dashboard")
+
+        st.write("""
+Excel based analytics dashboard:
+
+• Sales & profit tracking  
 • Segment performance  
-• Region-based insights
+• Region insights  
+• Discount analysis
 """)
 
-    st.subheader("💻 GitHub")
-    st.write("🔗 github.com/Math333-coder")
+        st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("</div>",unsafe_allow_html=True)
+    st.markdown("---")
 
-# ---------- CONTACT ----------
-elif st.session_state.page=="Contact":
+    st.subheader("💻 GitHub Repository")
+    st.markdown("🔗 https://github.com/Math333-coder")
 
-    st.markdown("<div class='card'>",unsafe_allow_html=True)
+# ---------------- CONTACT ----------------
+elif page == "Contact":
 
-    st.header("Contact Me")
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    name=st.text_input("Your Name")
-    email=st.text_input("Your Email")
-    msg=st.text_area("Message")
+    st.header("📬 Contact Me")
+
+    name = st.text_input("Your Name")
+    email = st.text_input("Your Email")
+    message = st.text_area("Message")
 
     if st.button("Send Message"):
-        st.success("Message sent successfully!")
 
-    st.markdown("</div>",unsafe_allow_html=True)
+        if name and email and message:
+            st.success("Message sent successfully!")
+        else:
+            st.warning("Please fill all fields")
 
-# ---------- RESUME ----------
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ---------------- RESUME DOWNLOAD ----------------
 st.markdown("---")
 
 try:
@@ -235,8 +248,8 @@ try:
             "Mathavan_G_Resume.pdf"
         )
 except:
-    st.info("Upload resume file to enable download")
+    st.info("Upload Mathavan_Resume.pdf in the same folder")
 
-# ---------- FOOTER ----------
+# ---------------- FOOTER ----------------
 st.markdown("---")
-st.markdown("<center>© 2026 Mathavan G | Python Developer</center>",unsafe_allow_html=True)
+st.markdown("<footer>© 2026 Mathavan G | Python Developer</footer>", unsafe_allow_html=True)
