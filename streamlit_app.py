@@ -142,4 +142,4 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------- FOOTER ----------
 st.markdown("---")
-st.markdown("<center>© 2025 Mathavan G | Python Developer</center>", unsafe_allow_html=True)
+st.markdown("<center>© 2026 Mathavan G | Python Developer</center>", unsafe_allow_html=True)
