@@ -131,35 +131,20 @@ elif page == "Projects":
         st.session_state.project_page = "home"
 
     # ---------------- PROJECT LIST ----------------
-    if st.session_state.project_page == "home":
+    # -----------------------------
+# PROJECTS
+# -----------------------------
+elif page == "Projects":
 
-        st.markdown('<p class="section-title">Projects</p>',unsafe_allow_html=True)
+    st.markdown('<p class="section-title">Projects</p>', unsafe_allow_html=True)
 
-        col1,col2 = st.columns(2)
+    project = st.radio(
+        "Select Project",
+        ["Sales Analytics Dashboard", "Dynamic Retail Dashboard"]
+    )
 
-        with col1:
-            st.subheader("📊 Sales Analytics Dashboard")
-
-            st.write("""
-Interactive dashboard to analyze business sales performance.
-""")
-
-            if st.button("View Project",key="sales"):
-                st.session_state.project_page = "sales"
-
-        with col2:
-            st.subheader("📈 Dynamic Retail Dashboard")
-
-            st.write("""
-Dynamic retail analytics dashboard built using Excel.
-""")
-
-            if st.button("View Project",key="retail"):
-                st.session_state.project_page = "retail"
-
-
-    # ---------------- SALES PROJECT PAGE ----------------
-    elif st.session_state.project_page == "sales":
+    # -------- PROJECT 1 --------
+    if project == "Sales Analytics Dashboard":
 
         st.subheader("📊 Sales Analytics Dashboard")
 
@@ -185,12 +170,8 @@ Built an interactive dashboard to analyze business sales performance.
 
         st.markdown("GitHub Repository: https://github.com/Math333-coder/Sales-Analytics")
 
-        if st.button("⬅ Back to Projects"):
-            st.session_state.project_page = "home"
-
-
-    # ---------------- RETAIL PROJECT PAGE ----------------
-    elif st.session_state.project_page == "retail":
+    # -------- PROJECT 2 --------
+    elif project == "Dynamic Retail Dashboard":
 
         st.subheader("📈 Dynamic Retail Dashboard")
 
@@ -216,10 +197,6 @@ Developed a dynamic retail dashboard to track and analyze sales data.
 """)
 
         st.markdown("GitHub Repository: https://github.com/Math333-coder/Dynamic_Retail_Dashboard")
-
-        if st.button("⬅ Back to Projects"):
-            st.session_state.project_page = "home"
-
 # -----------------------------
 # RESUME
 # -----------------------------
