@@ -1,225 +1,263 @@
 import streamlit as st
-from PIL import Image
 
-# -----------------------------
-# Page Config
-# -----------------------------
+# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
-    page_title="Mathavan Portfolio",
-    page_icon="📊",
+    page_title="Mathavan G | Python Developer",
+    page_icon="💻",
     layout="wide"
 )
 
-# -----------------------------
-# Custom Background Style
-# -----------------------------
-st.markdown(
-"""
+# ---------------- CSS ----------------
+st.markdown("""
 <style>
 
-.stApp {
-    background-color: #f4f8fb;
+.stApp{
+background-color:#0f172a;
+color:white;
+font-family:Segoe UI;
 }
 
-.main-title{
-font-size:42px;
-font-weight:bold;
-color:#1f3c88;
+/* HERO */
+
+.hero{
+text-align:center;
+padding:30px;
 }
 
-.sub-title{
-font-size:22px;
-color:gray;
+.hero h1{
+color:#38bdf8;
+font-size:55px;
 }
 
-.section-title{
-font-size:30px;
-font-weight:bold;
-color:#1f3c88;
+.hero h3{
+color:#4ade80;
+font-size:28px;
+}
+
+/* CARD */
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:15px;
 margin-top:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+
+/* PROJECT CARD */
+
+.project{
+background:#111827;
+padding:25px;
+border-radius:12px;
+border:1px solid #334155;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+margin-top:40px;
+color:#94a3b8;
 }
 
 </style>
-""",
-unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-# -----------------------------
-# Navigation Menu
-# -----------------------------
-st.sidebar.title("Navigation")
+# ---------------- SIDEBAR ----------------
+st.sidebar.title("📌 Navigation")
 
 page = st.sidebar.radio(
     "Go to",
-    ["Home","About","Skills","Projects","Resume","Contact"]
+    ["Profile","Education","Skills","Projects","Contact"]
 )
 
-# -----------------------------
-# HOME
-# -----------------------------
-if page == "Home":
+# ---------------- HERO ----------------
+col1,col2 = st.columns([3,1])
 
-    col1,col2 = st.columns([1,2])
+with col1:
 
-    with col1:
-        try:
-            image = Image.open("photo.jpeg")
-            st.image(image,width=220)
-        except:
-            st.write("Upload profile.jpg")
+    st.markdown("""
+<div class="hero">
 
-    with col2:
-        st.markdown('<p class="main-title">Hi, I\'m Mathavan 👋</p>',unsafe_allow_html=True)
-        st.markdown('<p class="sub-title">Data Analyst | Power BI | SQL | Excel</p>',unsafe_allow_html=True)
+<h1>MATHAVAN G</h1>
+<h3>Python Developer</h3>
 
-        st.write("""
-I am a **Data Analyst passionate about transforming raw data into meaningful insights**.
+📞 6374950532  
+📧 mathavaannavy@gmail.com  
 
-I create **interactive dashboards and analytics solutions**
-to help businesses make **data-driven decisions**.
-""")
+<a href="https://github.com/Math333-coder">GitHub</a> |
+<a href="https://www.linkedin.com">LinkedIn</a>
 
-# -----------------------------
-# ABOUT
-# -----------------------------
-elif page == "About":
+</div>
+""",unsafe_allow_html=True)
 
-    st.markdown('<p class="section-title">About Me</p>',unsafe_allow_html=True)
+with col2:
+    try:
+        st.image("photo.jpeg",width=200)
+    except:
+        st.warning("Upload photo.jpeg")
+
+st.markdown("---")
+
+# ---------------- PROFILE ----------------
+if page=="Profile":
+
+    st.markdown("<div class='card'>",unsafe_allow_html=True)
+
+    st.header("👨‍💻 Profile")
 
     st.write("""
-I specialize in **data analysis, visualization and dashboard development**.
+Motivated **MCA Graduate (2025)** seeking an entry-level **Python Developer role**.
 
-I enjoy working with business data and converting it into
-**clear and actionable insights** using modern analytics tools.
+Strong knowledge in:
+
+• Python Programming  
+• SQL & Databases  
+• Power BI Analytics  
+• Data Visualization  
+• Backend Development  
+
+Passionate about building **real-world applications** and **analytics solutions**.
 """)
 
-# -----------------------------
-# SKILLS
-# -----------------------------
-elif page == "Skills":
+    st.markdown("</div>",unsafe_allow_html=True)
 
-    st.markdown('<p class="section-title">Skills</p>',unsafe_allow_html=True)
+# ---------------- EDUCATION ----------------
+elif page=="Education":
 
-    col1,col2,col3 = st.columns(3)
+    st.markdown("<div class='card'>",unsafe_allow_html=True)
+
+    st.header("🎓 Education")
+
+    col1,col2 = st.columns(2)
 
     with col1:
-        st.subheader("📊 Data Visualization")
-        st.write("Power BI")
-        st.write("Excel Dashboards")
+        st.subheader("Master of Computer Applications")
+        st.write("2023 – 2025")
+        st.write("Hindustan College of Arts and Science")
+        st.success("CGPA : 7.8")
 
     with col2:
-        st.subheader("💻 Data Management")
-        st.write("SQL")
-        st.write("Data Cleaning")
+        st.subheader("Bachelor of Computer Science")
+        st.write("2020 – 2023")
+        st.write("Sri S. Ramaswamy Naidu Memorial College")
+        st.success("CGPA : 6.8")
 
-    with col3:
-        st.subheader("📚 Tools")
-        st.write("Python")
-        st.write("Pandas")
-        st.write("Excel")
+    st.markdown("</div>",unsafe_allow_html=True)
 
-# -----------------------------
-# PROJECTS
-# -----------------------------
-elif page == "Projects":
+# ---------------- SKILLS ----------------
+elif page=="Skills":
 
-    st.markdown('<p class="section-title">Projects</p>', unsafe_allow_html=True)
+    st.markdown("<div class='card'>",unsafe_allow_html=True)
 
-    tab1, tab2 = st.tabs(["📊 Sales Analytics Dashboard", "📈 Dynamic Retail Dashboard"])
+    st.header("🛠 Technical Skills")
 
-    # -------- PROJECT 1 --------
+    skills = {
+        "Python":90,
+        "MySQL":80,
+        "Power BI":75,
+        "Excel":70,
+        "Data Analytics":80,
+        "Problem Solving":85
+    }
+
+    for skill,value in skills.items():
+        st.subheader(skill)
+        st.progress(value)
+
+    st.markdown("</div>",unsafe_allow_html=True)
+
+# ---------------- PROJECTS ----------------
+elif page=="Projects":
+
+    st.header("🚀 Projects")
+
+    tab1,tab2 = st.tabs(["Sales Dashboard","Retail Dashboard"])
+
+    # ----- PROJECT 1 -----
     with tab1:
+
+        st.markdown("<div class='project'>",unsafe_allow_html=True)
 
         st.subheader("📊 Sales Analytics Dashboard")
 
         st.write("""
-Built an interactive dashboard to analyze business sales performance.
+Power BI dashboard that provides:
+
+• Regional sales analysis  
+• Product performance tracking  
+• Profit trend insights  
+• KPI based decision support
 """)
 
-        st.write("""
-**Tools Used**
-- Power BI
-- SQL
-- Excel
-""")
+        st.info("Tools Used: Power BI, Excel")
 
-        st.write("""
-**Features**
-- Regional sales performance analysis
-- Product level sales insights
-- KPI metrics such as revenue and profit
-- Interactive dashboard filters
-""")
+        st.markdown("GitHub: https://github.com/Math333-coder")
 
-        st.write("""
-**Insights**
-- Identified top performing products
-- Sales trends across months
-- Regional performance comparison
-""")
+        st.markdown("</div>",unsafe_allow_html=True)
 
-        st.markdown("GitHub Repository: https://github.com/Math333-coder/Sales-Analytics")
-
-    # -------- PROJECT 2 --------
+    # ----- PROJECT 2 -----
     with tab2:
+
+        st.markdown("<div class='project'>",unsafe_allow_html=True)
 
         st.subheader("📈 Dynamic Retail Dashboard")
 
         st.write("""
-Developed a dynamic retail dashboard to track and analyze sales data.
+Excel based analytics dashboard:
+
+• Sales & profit tracking  
+• Segment performance  
+• Region insights  
+• Discount analysis
 """)
 
-        st.write("""
-**Tools Used**
-- Excel
-- Pivot Tables
-- Charts
-- Slicers
-""")
+        st.info("Tools Used: Excel, Pivot Tables")
 
-        st.write("""
-**Features**
-- Interactive dashboard
-- Dynamic filtering
-- Sales trend visualization
-- KPI calculations
-""")
+        st.markdown("GitHub: https://github.com/Math333-coder")
 
-        st.write("""
-**Insights**
-- Monthly sales performance
-- Product category comparison
-- Retail performance overview
-""")
+        st.markdown("</div>",unsafe_allow_html=True)
 
-        st.markdown("GitHub Repository: https://github.com/Math333-coder/Dynamic_Retail_Dashboard")
-# -----------------------------
-# RESUME
-# -----------------------------
-elif page == "Resume":
+# ---------------- CONTACT ----------------
+elif page=="Contact":
 
-    st.markdown('<p class="section-title">Resume</p>',unsafe_allow_html=True)
+    st.markdown("<div class='card'>",unsafe_allow_html=True)
 
-    try:
-        with open("Mathavan_Resume.pdf","rb") as file:
-            st.download_button(
-                label="📄 Download Resume",
-                data=file,
-                file_name="Mathavan_Resume.pdf",
-                mime="application/pdf"
-            )
-    except:
-        st.info("Add resume.pdf to enable download")
+    st.header("📬 Contact Me")
 
-# -----------------------------
-# CONTACT
-# -----------------------------
-elif page == "Contact":
+    name = st.text_input("Your Name")
+    email = st.text_input("Your Email")
+    message = st.text_area("Message")
 
-    st.markdown('<p class="section-title">Contact</p>',unsafe_allow_html=True)
+    if st.button("Send Message"):
 
-    st.write("📧 Email: mathavannavy@gmail.com")
-    st.write("💼 LinkedIn: https://linkedin.com/in/yourprofile")
-    st.write("💻 GitHub: https://github.com/yourusername")
+        if name and email and message:
+            st.success("Message sent successfully!")
+        else:
+            st.warning("Please fill all fields")
 
-    st.success("Thanks for visiting my portfolio!")
+    st.markdown("</div>",unsafe_allow_html=True)
+
+# ---------------- RESUME ----------------
+st.markdown("---")
+
+try:
+    with open("Mathavan_Resume.pdf","rb") as file:
+
+        st.download_button(
+            "📄 Download Resume",
+            file,
+            "Mathavan_Resume.pdf"
+        )
+
+except:
+    st.info("Upload Mathavan_Resume.pdf")
+
+# ---------------- FOOTER ----------------
+st.markdown("---")
+
+st.markdown(
+"<footer>© 2026 Mathavan G | Python Developer</footer>",
+unsafe_allow_html=True
+)
