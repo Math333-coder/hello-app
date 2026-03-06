@@ -121,47 +121,37 @@ elif page == "Skills":
 # -----------------------------
 # PROJECTS
 # -----------------------------
-# -----------------------------
-# PROJECTS
-# -----------------------------
-elif page == "Projects":
-
-    # create session state
-    if "project_page" not in st.session_state:
-        st.session_state.project_page = "home"
-
-    # ---------------- PROJECT LIST ----------------
-    # -----------------------------
-# PROJECTS
-# -----------------------------
 elif page == "Projects":
 
     st.markdown('<p class="section-title">Projects</p>', unsafe_allow_html=True)
 
-    project = st.radio(
-        "Select Project",
-        ["Sales Analytics Dashboard", "Dynamic Retail Dashboard"]
-    )
+    tab1, tab2 = st.tabs(["📊 Sales Analytics Dashboard", "📈 Dynamic Retail Dashboard"])
 
     # -------- PROJECT 1 --------
-    if project == "Sales Analytics Dashboard":
+    with tab1:
 
         st.subheader("📊 Sales Analytics Dashboard")
 
         st.write("""
 Built an interactive dashboard to analyze business sales performance.
+""")
 
+        st.write("""
 **Tools Used**
 - Power BI
 - SQL
 - Excel
+""")
 
+        st.write("""
 **Features**
 - Regional sales performance analysis
 - Product level sales insights
 - KPI metrics such as revenue and profit
 - Interactive dashboard filters
+""")
 
+        st.write("""
 **Insights**
 - Identified top performing products
 - Sales trends across months
@@ -171,25 +161,31 @@ Built an interactive dashboard to analyze business sales performance.
         st.markdown("GitHub Repository: https://github.com/Math333-coder/Sales-Analytics")
 
     # -------- PROJECT 2 --------
-    elif project == "Dynamic Retail Dashboard":
+    with tab2:
 
         st.subheader("📈 Dynamic Retail Dashboard")
 
         st.write("""
 Developed a dynamic retail dashboard to track and analyze sales data.
+""")
 
+        st.write("""
 **Tools Used**
 - Excel
 - Pivot Tables
 - Charts
 - Slicers
+""")
 
+        st.write("""
 **Features**
 - Interactive dashboard
 - Dynamic filtering
 - Sales trend visualization
 - KPI calculations
+""")
 
+        st.write("""
 **Insights**
 - Monthly sales performance
 - Product category comparison
