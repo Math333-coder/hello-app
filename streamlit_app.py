@@ -193,7 +193,7 @@ Power BI dashboard that provides:
 
         st.info("Tools Used: Power BI, Excel")
 
-        st.markdown("GitHub: https://github.com/Math333-coder")
+        st.markdown("GitHub: https://github.com/Math333-coder/Sales-Analytics")
 
         st.markdown("</div>",unsafe_allow_html=True)
 
@@ -215,7 +215,7 @@ Excel based analytics dashboard:
 
         st.info("Tools Used: Excel, Pivot Tables")
 
-        st.markdown("GitHub: https://github.com/Math333-coder")
+        st.markdown("GitHub: https://github.com/Math333-coder/Dynamic_Retail_Dashboard")
 
         st.markdown("</div>",unsafe_allow_html=True)
 
